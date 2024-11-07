@@ -2,8 +2,8 @@ from datetime import date
 from typing import List
 
 import os
-import requests
-from requests import request
+# import requests
+# from requests import request
 from flask import Flask, abort, render_template, redirect, url_for, flash
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
@@ -239,7 +239,7 @@ def show_post(post_id):
         else:
             flash("You need to Login or Register to comment.")
             return redirect(url_for("login"))
-    profile_image = requests.post(url="https://gravatar.com/27205e5c51cb03f862138b22bcb5dc20f94a342e744ff6df1b8dc8af3c865109.json")
+    # profile_image = requests.post(url="https://gravatar.com/27205e5c51cb03f862138b22bcb5dc20f94a342e744ff6df1b8dc8af3c865109.json")
     return render_template("post.html", post=requested_post, logged_in=user_authentication, user=current_user,
                            form=comment_form, )
 
