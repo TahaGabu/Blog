@@ -301,6 +301,16 @@ def delete_post(post_id):
     return redirect(url_for('get_all_posts'))
 
 
+@app.route("/delete_comment/<int:comment_id>")
+@admin_only
+def delete_comment(comment_id):
+    comment_to_delete = db.get_or_404(Comment, comment_id)
+    db.session.delete(comment_to_delete)
+    db.session.commit()
+    flash("Comment Deleted Successfully!")
+    return redirect(url_for("get_all_posts"))
+
+
 @app.route("/about")
 def about():
     return render_template("about.html", logged_in=current_user.is_authenticated)
